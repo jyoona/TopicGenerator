@@ -33,6 +33,7 @@ var MainView = React.createClass({
                 if (this.state.topics[0].nouns[i]==topic)
                     this.state.topics[0].nouns.splice(i, 1);
             }
+            document.getElementById("topic").innerHTML = "";
             this.refreshTopics();
         }
     },

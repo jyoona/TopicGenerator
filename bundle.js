@@ -34,6 +34,7 @@ var MainView = React.createClass({displayName: "MainView",
                 if (this.state.topics[0].nouns[i]==topic)
                     this.state.topics[0].nouns.splice(i, 1);
             }
+            document.getElementById("topic").innerHTML = "";
             this.refreshTopics();
         }
     },
@@ -56,6 +57,13 @@ var MainView = React.createClass({displayName: "MainView",
                 if(a > b) return 1;
                 return 0;
             });
+
+            for (var j=0; j<this.state.topics[0].nouns.length-1; j++) {
+                if (this.state.topics[0].nouns[j]==this.state.topics[0].nouns[j-1]) {
+                    this.state.topics[0].nouns.splice(j, 1);
+                    j--;
+                }
+            }
 
             this.refreshTopics();
 
