@@ -60,7 +60,10 @@ var MainView = React.createClass({
             this.refreshTopics();
 
             document.getElementById("newTopic").value = "";
+            document.getElementById("note").innerHTML = "";
         }
+        else if (newTopic!=="" && dontAdd)
+            document.getElementById("note").innerHTML = "Word already exists.";
     },
 
     refreshTopics: function () {
@@ -90,6 +93,7 @@ var MainView = React.createClass({
             type="text"
             id="newTopic"
             />
+            <p style={{fontSize:12}} id="note"></p>
             </div>);
     }
 });

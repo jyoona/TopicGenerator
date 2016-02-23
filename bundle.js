@@ -58,17 +58,13 @@ var MainView = React.createClass({displayName: "MainView",
                 return 0;
             });
 
-            for (var j=0; j<this.state.topics[0].nouns.length-1; j++) {
-                if (this.state.topics[0].nouns[j]==this.state.topics[0].nouns[j-1]) {
-                    this.state.topics[0].nouns.splice(j, 1);
-                    j--;
-                }
-            }
-
             this.refreshTopics();
 
             document.getElementById("newTopic").value = "";
+            document.getElementById("note").innerHTML = "";
         }
+        else if (newTopic!=="" && dontAdd)
+            document.getElementById("note").innerHTML = "Word already exists.";
     },
 
     refreshTopics: function () {
@@ -97,7 +93,8 @@ var MainView = React.createClass({displayName: "MainView",
             React.createElement("input", {
             type: "text", 
             id: "newTopic"}
-            )
+            ), 
+            React.createElement("p", {style: {fontSize:12}, id: "note"})
             ));
     }
 });
